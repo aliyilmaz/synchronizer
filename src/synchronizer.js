@@ -1,4 +1,3 @@
-
 class synchronizer {
     constructor(conf={}) {
 
@@ -91,8 +90,10 @@ class synchronizer {
     }
     async run(){
         while (true) {
-            this.request = this.dataCompiler(this.column);        
-            await this.action(this.request); // Call the function
+            if(this.isOnline()){
+                this.request = this.dataCompiler(this.column);        
+                await this.action(this.request); // Call the function
+            }
             await this.sleep(this.delay);
         }
     }
