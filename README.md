@@ -42,7 +42,7 @@ new synchronizer({
 
 ### info
 
-It is not mandatory to specify the `delay` key. If `delay` is not specified, the program is run once. The `delay` must be specified in **milliseconds**. (For example: 10000 for 1 second) Specifying the `action` button is mandatory.
+It is not mandatory to specify the `delay` key. If `delay` is not specified, the program is run once. The `delay` must be specified in **milliseconds**. (For example: 1000 for 1 second) Specifying the `action` button is mandatory.
 
 ### Scenarios:
 
