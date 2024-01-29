@@ -12,6 +12,7 @@
         localStorage.setItem('user', JSON.stringify({'username':'ali'}));
 
         new synchronizer({
+            'online':true,
             'delay':'1000',
             'column':['setting', 'user'],
             'source':'storage',

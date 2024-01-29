@@ -1,6 +1,6 @@
 # synchronizer
 
-This library is used to determine the fate of a form or local storage data. It periodically checks the internet connection, does not take any action if there is no connection, and repeats the operations every specified seconds if there is a connection.
+This library is used to determine the fate of a form or local storage data. It can work with or without internet dependency. If internet connection is required, it checks the internet connection periodically. If there is no connection, it does not take any action. If there is a connection, it repeats the operations within the specified seconds.
 
 ## Use
 
@@ -15,6 +15,7 @@ An example of determining the fate of form data within the specified period. In 
 
 ```javascript
 new synchronizer({
+    'online':true,
     'delay':'1000', // The frequency of sending the request is 1 seconds
     'source':'form', // storage, form
     'element':'div#test', // Used when selected source form
@@ -30,6 +31,7 @@ It is used to determine the fate of the data in Localstorage within a specified 
 
 ```javascript
 new synchronizer({
+    'online':true,
     'delay':'1000', // The frequency of sending the request is 1 seconds
     'column':['setting', 'user'], // Used when selected source storage 
     'source':'storage', // storage, form
@@ -42,7 +44,7 @@ new synchronizer({
 
 ### Additional info:
 
-It is not mandatory to specify the `delay` key. If `delay` is not specified, the program is run once. The `delay` must be specified in **milliseconds** (For example: 1000 for 1 second). Specifying the `action` button is mandatory.
+It is not mandatory to specify the `delay` key. If `delay` is not specified, the program is run once. `delay` must be specified in **milliseconds** (For example: 1000 for 1 second). Specifying the `action` button is mandatory. The `online` key does not have to be specified. If the `online` switch is specified as `true`, the program will not run until there is internet.
 
 ### Scenarios:
 
@@ -86,6 +88,7 @@ It is not mandatory to specify the `delay` key. If `delay` is not specified, the
     <script>
         
         new synchronizer({
+            'online':true,
             'delay':'1000',
             'source':'form',
             'element':'div#test',
@@ -114,6 +117,7 @@ It is not mandatory to specify the `delay` key. If `delay` is not specified, the
         localStorage.setItem('user', JSON.stringify({'username':'ali'}));
 
         new synchronizer({
+            'online':true,
             'delay':'1000',
             'column':['setting', 'user'],
             'source':'storage',

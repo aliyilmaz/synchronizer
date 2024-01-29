@@ -1,6 +1,7 @@
 class synchronizer {
     constructor(conf={}) {
 
+      this.online = (conf.online !== undefined) ? conf.online : false;
       this.delay = (conf.delay !== undefined) ? conf.delay : null;
       this.column = (conf.column !== undefined) ? conf.column : [];  
       this.element = (conf.element !== undefined) ? conf.element : null;  
@@ -53,14 +54,14 @@ class synchronizer {
 
         if(this.source === 'storage'){
 
-            if(this.isArray(data) && this.isOnline()){
+            if(this.isArray(data)){
                 data.forEach((name)=>{
                     if(this.isLocalStorageKeyExist(name)){
                         request[name] = JSON.parse(localStorage.getItem(name));
                     }
                 });            
             }
-            if(this.isString(data) && this.isOnline()){
+            if(this.isString(data)){
                 if(this.isLocalStorageKeyExist(data)){
                     request[data] = JSON.parse(localStorage.getItem(data));  
                 }          
@@ -68,7 +69,7 @@ class synchronizer {
 
         }
 
-        if(this.source === 'form' && this.isOnline()){
+        if(this.source === 'form'){
             request = JSON.parse(this.serialize(this.element));
         }
 
@@ -89,11 +90,15 @@ class synchronizer {
         return JSON.stringify( obj );
     }
     async run(){
-        while (true) {
-            if(this.isOnline()){
+        let internet = true;
+        while (true) {  
+            internet = (this.online === true && this.isOnline() === false) ? false : true;
+
+            if(internet){
                 this.request = this.dataCompiler(this.column);        
-                await this.action(this.request); // Call the function
+                await this.action(this.request); // Call the function  
             }
+          
             if(this.delay === null) return;
             await this.sleep(this.delay);
         }
