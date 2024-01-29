@@ -26,7 +26,7 @@ new synchronizer({
 ```
 
 ### storage
-It is used to determine the fate of the data in Localstorage within a specified period of time. You must specify the column key in data type `String` or `Array` and update the `source` key to `storage`.
+It is used to determine the fate of the data in Localstorage within a specified period of time. You must specify the `column` key in data type `String` or `Array` and update the `source` key to `storage`.
 
 ```javascript
 new synchronizer({
@@ -39,6 +39,10 @@ new synchronizer({
     } 
 });
 ```
+
+### info
+
+It is not mandatory to specify the `delay` key. If `delay` is not specified, the program is run once. The `delay` must be specified in **milliseconds**. (For example: 10000 for 1 second) Specifying the `action` button is mandatory.
 
 ### Scenarios:
 
