@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script src="src/synchronizer.js"></script>
+</head>
+<body>
+    <div id="test">
+        <!-- Text Input -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <!-- Select -->
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Woman</option>
+            <option value="other">Other</option>
+        </select><br><br>
+
+        <!-- Textarea -->
+        <label for="message">Your Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+
+        <!-- Checkbox -->
+        <label for="subscribe">Subscribe:</label>
+        <input type="checkbox" id="subscribe" name="subscribe" checked><br><br>
+
+        
+        <!-- Button -->
+        <button type="submit" name="submit">Send</button>   
+    </div>
+    <script>
+        
+        new synchronizer({
+            'delay':'1000',
+            'source':'form',
+            'element':'div#test',
+            'action': function(request) {
+                console.log(request);
+            } 
+        });
+    </script>
+</body>
+</html>

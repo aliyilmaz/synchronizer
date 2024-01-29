@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage</title>
+    <script src="src/synchronizer.js"></script>
+</head>
+<body>
+    <script>
+        localStorage.setItem('setting', JSON.stringify({'coordinate':'39.90973623453719,32.82714843750001'}));
+        localStorage.setItem('user', JSON.stringify({'username':'ali'}));
+
+        new synchronizer({
+            'delay':'1000',
+            'column':['setting', 'user'],
+            'source':'storage',
+            'action': function(request) {
+                console.log(request);
+            } 
+        });
+    </script>
+</body>
+</html>
