@@ -1,7 +1,7 @@
 class synchronizer {
     constructor(conf={}) {
 
-      this.delay = (conf.delay !== undefined) ? conf.delay : 15000;
+      this.delay = (conf.delay !== undefined) ? conf.delay : null;
       this.column = (conf.column !== undefined) ? conf.column : [];  
       this.element = (conf.element !== undefined) ? conf.element : null;  
       this.source = (conf.source !== undefined) ? conf.source : null;  
@@ -94,6 +94,7 @@ class synchronizer {
                 this.request = this.dataCompiler(this.column);        
                 await this.action(this.request); // Call the function
             }
+            if(this.delay === null) return;
             await this.sleep(this.delay);
         }
     }
