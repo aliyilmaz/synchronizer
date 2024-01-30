@@ -1,6 +1,6 @@
 # synchronizer
 
-This library is used to determine the fate of a form or local storage data.
+This library is used to determine the fate of a form or local storage data. It can work with or without internet addiction.
 
 ## Use
 
@@ -18,10 +18,10 @@ new synchronizer({
     'online':true,
     'delay':'1000', // The frequency of sending the request is 1 seconds
     'source':'form', // storage, form
-    'element':'div#test', // Used when selected source form
+    'element':'form#test', // Used when selected source form
     'action': function(request) {
-        // Determine the fate of the data
-        console.log(request);
+        //  With Axios or another Javascript library
+        //  you can send the Request object 
     } 
 });
 ```
@@ -36,8 +36,8 @@ new synchronizer({
     'column':['setting', 'user'], // Used when selected source storage 
     'source':'storage', // storage, form
     'action': function(request) {
-        // Determine the fate of the data
-        console.log(request);
+        //  With Axios or another Javascript library
+        //  you can send the Request object 
     } 
 });
 ```
