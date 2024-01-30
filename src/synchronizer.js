@@ -57,37 +57,26 @@ class synchronizer {
             if(this.isArray(data)){
                 data.forEach((name)=>{
                     if(this.isLocalStorageKeyExist(name)){
-                        request[name] = JSON.parse(localStorage.getItem(name));
+                        request[name] = localStorage.getItem(name);
                     }
                 });            
             }
             if(this.isString(data)){
                 if(this.isLocalStorageKeyExist(data)){
-                    request[data] = JSON.parse(localStorage.getItem(data));  
+                    request[data] = localStorage.getItem(data); 
                 }          
             }
-
+                       
         }
 
         if(this.source === 'form'){
-            request = JSON.parse(this.serialize(this.element));
+            request = this.serialize(this.element);
         }
 
         return request;
     }
     serialize(element){
-        var obj = {};
-        var elements = document.querySelector(element).querySelectorAll( "input, select, textarea, button" );
-        for( var i = 0; i < elements.length; ++i ) {
-            var element = elements[i];
-            var name = element.name;
-            var value = element.value;
-    
-            if( name ) {
-                obj[ name ] = value;
-            }
-        }
-        return JSON.stringify( obj );
+        return new FormData(document.querySelector(element));
     }
     async run(){
         let internet = true;

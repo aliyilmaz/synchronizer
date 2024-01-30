@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
     <script src="src/synchronizer.js"></script>
 </head>
 <body>
-    <div id="test">
+    <form id="test">
         <!-- Text Input -->
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
+        <input type="text" name="name" autocomplete="off" id="name" ><br><br>
 
         <!-- Select -->
-        <label for="gender">Gender:</label>
+        <label for="gender">Gender:</label><br>
         <select id="gender" name="gender">
             <option value="male">Male</option>
             <option value="female">Woman</option>
             <option value="other">Other</option>
+        </select><br><br>
+
+        <!-- Multi Select -->
+        <label for="sport">Sport:</label><br>
+        <select name="sport[]" id="sport" multiple>
+            <option value="swimming">Swimming</option>
+            <option value="hiking">Hiking</option>
+            <option value="soccer">Soccer</option>
         </select><br><br>
 
         <!-- Textarea -->
@@ -25,22 +34,58 @@
         <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
 
         <!-- Checkbox -->
-        <label for="subscribe">Subscribe:</label>
+        <label for="subscribe">Subscribe:</label><br>
         <input type="checkbox" id="subscribe" name="subscribe" checked><br><br>
+        
+        <!-- Multi Checkbox -->
+        <span>Groups:</span><br>
+        <input type="checkbox" name="groups" value="user"> User <br>
+        <input type="checkbox" name="groups" value="editor"> Editor <br>
+        <input type="checkbox" name="groups" value="admin"> Admin <br>
+        <br>
 
+        <!-- Radio -->
+        <span>Appointment day:</span><br>
+        <input type="radio" name="appointment_day" value="Monday"> Monday <br>
+        <input type="radio" name="appointment_day" value="Tuesday"> Tuesday <br>
+        <input type="radio" name="appointment_day" value="Wednesday"> Wednesday <br>
+        <input type="radio" name="appointment_day" value="Thursday"> Thursday <br>
+        <input type="radio" name="appointment_day" value="Friday"> Friday <br>
+        <input type="radio" name="appointment_day" value="Saturday"> Saturday <br>
+        <input type="radio" name="appointment_day" value="Sunday"> Sunday <br><br>
+
+        <!-- File -->
+        <label for="single_file">File:</label><br>
+        <input type="file" name="single_file" id="single_file"><br><br>
+
+        <!-- Files -->
+        <label for="multi_files">Files:</label><br>
+        <input type="file" name="multi_files[]" id="multi_files" multiple><br><br>
         
         <!-- Button -->
         <button type="submit" name="submit">Send</button>   
-    </div>
+    </form>
     <script>
         
         new synchronizer({
             'online':true,
-            'delay':'1000',
+            'delay':'4000',
             'source':'form',
-            'element':'div#test',
-            'action': function(request) {
-                console.log(request);
+            'element':'form#test',
+            'action': function(request) {  
+                    
+                //  With Axios or another Javascript library
+                //  you can send the Request object  
+
+                /*
+                axios.post('form.php', request)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+                */
             } 
         });
     </script>

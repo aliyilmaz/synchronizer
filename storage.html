@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storage</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="src/synchronizer.js"></script>
 </head>
 <body>
@@ -13,11 +14,26 @@
 
         new synchronizer({
             'online':true,
-            'delay':'1000',
+            'delay':'4000',
             'column':['setting', 'user'],
             'source':'storage',
             'action': function(request) {
-                console.log(request);
+                
+                //  With Axios or another Javascript library
+                //  you can send the Request object 
+
+                //  console.log(request);  
+
+                /*
+                axios.post('form.php', request)
+                .then(function (response) {
+                    let data = JSON.parse(response.data);
+                    console.log(data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+                */
             } 
         });
     </script>
