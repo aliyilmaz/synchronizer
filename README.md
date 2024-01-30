@@ -129,3 +129,8 @@ It is not mandatory to specify the `delay` key. If `delay` is not specified, the
 </body>
 </html>
 ```
+
+### Task list
+
+- [ ] Providing file support.
+- [ ] Providing multi-selection feature for Checkbox, Select and File.
